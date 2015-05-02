@@ -55,9 +55,8 @@ curl -XPUT http://localhost:9200/user/_mapping/profile -d '
 Now let's insert some data!
 ---
 ```
-curl -XPOST http://localhost:9200/user/profile -d '
+curl -XPOST http://localhost:9200/user/profile/1 -d '
 {
-    "_id" : 1,
     "full_name" : "Andrew Puch",
     "bio" : "My name is Andrew. I am an agile DevOps Engineer who is passionate about working with Software as a Service based applications, REST APIs, and various web application frameworks.",
     "age" : 27,
