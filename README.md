@@ -51,9 +51,9 @@ curl -XPUT http://localhost:9200/user/_mapping/profile -d '
 Now let's insert some data!
 ---
 ```
-# We are going to insert two users just to show you how searching works. Here I am 
+# We are going to insert three users just to show you how searching works. Here I am 
 # actually telling elasticsearch what I want the ID of the document to be. You'll 
-# see an ID of 1 and 2. If you do not specify this elasticsearch will create an ID 
+# see an ID of 1, 2 and 3. If you do not specify this elasticsearch will create an ID 
 # for you by default. Sometimes this is fine because if you are dealing with more big 
 # data that has no relation the ID isn't too big of a worry. However in applications 
 # where you want to constantly update the data in elasticsearch such as a social network 
