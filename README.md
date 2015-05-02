@@ -51,6 +51,14 @@ curl -XPUT http://localhost:9200/user/_mapping/profile -d '
 Now let's insert some data!
 ---
 ```
+# We are going to insert two users just to show you how searching works. Here I am 
+# actually telling elasticsearch what I want the ID of the document to be. You'll 
+# see an ID of 1 and 2. If you do not specify this elasticsearch will create an ID 
+# for you by default. Sometimes this is fine because if you are dealing with more big 
+# data that has no relation the ID isn't too big of a worry. However in applications 
+# where you want to constantly update the data in elasticsearch such as a social network 
+# you will want to add an ID.
+
 curl -XPOST http://localhost:9200/user/profile/1 -d '
 {
     "full_name" : "Andrew Puch",
@@ -59,6 +67,17 @@ curl -XPOST http://localhost:9200/user/profile/1 -d '
     "location" : "41.1246110,-73.4232880",
     "enjoys_coffee" : true,
     "created_on" : "2015-05-02T14:45:10.000-04:00"
+}
+'
+
+curl -XPOST http://localhost:9200/user/profile/2 -d '
+{
+    "full_name" : "Elon Musk",
+    "bio" : "Elon Reeve Musk is a Canadian-American entrepreneur, engineer, inventor and investor. He is the CEO and CTO of SpaceX, CEO and product architect of Tesla Motors, and chairman of SolarCity.",
+    "age" : 43,
+    "location" : "37.7749290,-122.4194160",
+    "enjoys_coffee" : false,
+    "created_on" : "2015-05-02T15:45:10.000-04:00"
 }
 '
 ```
