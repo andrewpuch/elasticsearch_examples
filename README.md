@@ -126,34 +126,9 @@ Updating more than one at a time!
 # So since Elon is pretty much the most amazing human in the world he wants to update
 # his name to Elon Musk The Great. Alongside of that I decided that I want to update 
 # my age to 27. The best way to perform more than one action at a time in elasticsearch
-# is through the bulk API. 
+# is through the bulk API. In my repository there is the bulk.json file.
 
-curl -XPOST http://localhost:9200/_bulk -d '
-{
-    "update": {
-        "_index": "user", 
-        "_type": "profile", 
-        "_id": "2"
-    }
-}\n
-{ 
-    "doc" : {
-        "full_name" : "Elon Musk The Great" 
-    }
-}\n
-{
-    "update": {
-        "_index": "user", 
-        "_type": "profile", 
-        "_id": "1"
-    }
-}\n
-{
-    "doc" : {
-        "age" : 27
-    }
-}\n
-'
+curl -XPOST http://localhost:9200/_bulk --data-binary @bulk.json
 ```
 
 Now let's query that data!
