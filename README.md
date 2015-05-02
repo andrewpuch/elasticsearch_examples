@@ -167,4 +167,65 @@ curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
 }
 '
 
+# That was cool and all but now we want to find out which users were created within
+# a certain time range who don't enjoy coffee! Seriously who could not enjoy endless
+# amounts of coffee though? Coffee rulezzz.
+
+curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
+{ 
+    "query" : {
+        "bool" : {
+            "must" : [
+                {
+                    "term" : {
+                        "enjoys_coffee" : false
+                    }
+                },
+                {
+                    "range" : {
+                        "created_on" : {
+                            "gte" : "2015-05-02T15:44:10.000-04:00",
+                            "lte" : "2015-05-02T15:46:10.000-04:00"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+'
+
+# Cool! Still getting some good queries! Lets verify that the user is
+# less than a certain age as well. 
+
+curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
+{ 
+    "query" : {
+        "bool" : {
+            "must" : [
+                {
+                    "term" : {
+                        "enjoys_coffee" : false
+                    }
+                },
+                {
+                    "range" : {
+                        "created_on" : {
+                            "gte" : "2015-05-02T15:44:10.000-04:00",
+                            "lte" : "2015-05-02T15:46:10.000-04:00"
+                        }
+                    }
+                },
+                {
+                    "range" : {
+                        "age" : {
+                            "lt" : 44
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+'
 ```
