@@ -8,6 +8,10 @@ curl -XPUT http://ELASTIC_URL:9200/user
 curl -XPUT http://ELASTIC_URL:9200/user/_mapping/profile -d '
 {
     "profile" : {
+        "_timestamp" : {
+            "enabled" : true,
+            "path" : "created_on"
+        }
         "properties" : {
             "full_name" : {"type" : "string", "store" : true },
             "bio" : {"type" : "string", "store" : true },
