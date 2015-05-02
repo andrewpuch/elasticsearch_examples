@@ -80,6 +80,17 @@ curl -XPOST http://localhost:9200/user/profile/2 -d '
     "created_on" : "2015-05-02T15:45:10.000-04:00"
 }
 '
+
+curl -XPOST http://localhost:9200/user/profile/3 -d '
+{
+    "full_name" : "Some Hacker",
+    "bio" : "I am a haxor user who you should end up deleting.",
+    "age" : 1000,
+    "location" : "37.7749290,-122.4194160",
+    "enjoys_coffee" : true,
+    "created_on" : "2015-05-02T16:45:10.000-04:00"
+}
+'
 ```
 
 Now time to update a record.
@@ -97,6 +108,16 @@ curl -XPOST http://localhost:9200/user/profile/1/_update -d '
     }
 }
 '
+```
+
+We noticed a bad user. Let's delete them.
+---
+```
+# So not only will you need to update and insert records but if users are moving in and
+# out of your system docs will need to be deleted. In our case for this demo we notice
+# that there is a bad user. Lets remove them.
+
+curl -XDELETE http://localhost:9200/user/profile/3
 ```
 
 Now let's query that data!
