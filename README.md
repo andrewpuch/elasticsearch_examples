@@ -33,11 +33,6 @@ Create the mapping for the user index and type of profile.
 curl -XPUT http://localhost:9200/user/_mapping/profile -d '
 {
     "profile" : {
-        "_timestamp" : {
-            "enabled" : true,
-            "path" : "created_on",
-            "store": "yes"
-        },
         "properties" : {
             "full_name" : { "type" : "string", "store" : true },
             "bio" : { "type" : "string", "store" : true },
@@ -63,7 +58,7 @@ curl -XPOST http://localhost:9200/user/profile/1 -d '
     "age" : 27,
     "location" : "41.1246110,-73.4232880",
     "enjoys_coffee" : true,
-    "created_on" : now
+    "created_on" : "2015-05-02T14:45:10.000-04:00"
 }
 '
 ```
