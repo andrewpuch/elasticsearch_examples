@@ -63,7 +63,7 @@ curl -XPOST http://localhost:9200/user/profile/1 -d '
 {
     "full_name" : "Andrew Puch",
     "bio" : "My name is Andrew. I am an agile DevOps Engineer who is passionate about working with Software as a Service based applications, REST APIs, and various web application frameworks.",
-    "age" : 27,
+    "age" : 26,
     "location" : "41.1246110,-73.4232880",
     "enjoys_coffee" : true,
     "created_on" : "2015-05-02T14:45:10.000-04:00"
@@ -118,6 +118,43 @@ We noticed a bad user. Let's delete them.
 # that there is a bad user. Lets remove them.
 
 curl -XDELETE http://localhost:9200/user/profile/3
+```
+
+Updating more than one at a time!
+---
+```
+# So since Elon is pretty much the most amazing human in the world he wants to update
+# his name to Elon Musk The Great. Alongside of that I decided that I want to update 
+# my age to 27. The best way to perform more than one action at a time in elasticsearch
+# is through the bulk API. 
+
+curl -XPOST http://localhost:9200/_bulk -d '
+    {
+        "update": {
+            "_index": "user", 
+            "_type": "profile", 
+            "_id": "2"
+        }
+    }\n
+    { 
+        "doc" : {
+            "full_name" : "Elon Musk The Great" 
+        }
+    }\n
+    {
+        "update": {
+            "_index": "user", 
+            "_type": "profile", 
+            "_id": "1"
+        }
+    }\n
+    {
+        "doc" : {
+            "age" : 27
+        }
+    }\n
+}\n
+'
 ```
 
 Now let's query that data!
