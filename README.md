@@ -123,4 +123,17 @@ curl -XDELETE http://localhost:9200/user/profile/3
 Now let's query that data!
 ---
 ```
+# Generic query.
+
+curl -XGET http://localhost:9200/user/profile/_search?pretty
+
+# Let's search for the word "engineer" you'll notice we get both our users back because 
+# engineer is in both of their profiles.
+
+curl -XGET http://localhost:9200/user/profile/_search?q=engineer
+
+# Now let's just search for users who have "investor" in their profile. You will notice
+# we only get back Elon's profile.
+
+curl -XGET http://localhost:9200/user/profile/_search?q=investor
 ```
