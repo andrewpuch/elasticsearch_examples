@@ -1,6 +1,15 @@
 ```
 # Create the user index.
-curl -XPUT http://ELASTIC_URL:9200/user
+curl -XPUT http://ELASTIC_URL:9200/user -d '
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 5,
+            "number_of_replicas" : 1
+        }
+    }
+}
+'
 ```
 
 ```
