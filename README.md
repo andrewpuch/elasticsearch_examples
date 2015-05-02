@@ -90,7 +90,6 @@ Now time to update a record.
 # So let's do that. It's important here that we specify "doc" and _update because if 
 # you don't you will wipe out your record ;)
 
-```
 curl -XPOST http://localhost:9200/user/profile/1/_update -d '
 {
     "doc" : {
