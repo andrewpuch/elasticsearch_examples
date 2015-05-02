@@ -1,4 +1,4 @@
-{ "update": { "_index": "user", "_type": "profile", "_id": "2" } }
+{ "update": { "_index" : "user", "_type" : "profile", "_id" : "2" } }
 { "doc" : { "full_name" : "Elon Musk The Great" } }
-{ "update": { "_index": "user","_type": "profile", "_id": "1" } }
+{ "update": { "_index" : "user","_type" : "profile", "_id" : "1" } }
 { "doc" : { "age" : 27 } }
