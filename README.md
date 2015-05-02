@@ -82,6 +82,24 @@ curl -XPOST http://localhost:9200/user/profile/2 -d '
 '
 ```
 
+Now time to update a record.
+---
+```
+# Pretending we are running a real social networking application. And let's say I 
+# just relocated to a new City and State! We are going to want to update our record. 
+# So let's do that. It's important here that we specify "doc" and _update because if 
+# you don't you will wipe out your record ;)
+
+```
+curl -XPOST http://localhost:9200/user/profile/1/_update -d '
+{
+    "doc" : {
+        "location" : "40.7127840,-74.0059410"
+    }
+}
+'
+```
+
 Now let's query that data!
 ---
 ```
