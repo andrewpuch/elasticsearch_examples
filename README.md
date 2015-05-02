@@ -1,6 +1,6 @@
 ```
 # Create the user index.
-curl -XPUT http://ELASTIC_URL:9200/user -d '
+curl -XPUT http://localhost:9200/user -d '
 {
     "settings" : {
         "index" : {
@@ -14,7 +14,7 @@ curl -XPUT http://ELASTIC_URL:9200/user -d '
 
 ```
 # Creating the mapping for the index user and type profile. 
-curl -XPUT http://ELASTIC_URL:9200/user/_mapping/profile -d '
+curl -XPUT http://localhost:9200/user/_mapping/profile -d '
 {
     "profile" : {
         "_timestamp" : {
