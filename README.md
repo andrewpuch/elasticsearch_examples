@@ -129,30 +129,29 @@ Updating more than one at a time!
 # is through the bulk API. 
 
 curl -XPOST http://localhost:9200/_bulk -d '
-    {
-        "update": {
-            "_index": "user", 
-            "_type": "profile", 
-            "_id": "2"
-        }
-    }\n
-    { 
-        "doc" : {
-            "full_name" : "Elon Musk The Great" 
-        }
-    }\n
-    {
-        "update": {
-            "_index": "user", 
-            "_type": "profile", 
-            "_id": "1"
-        }
-    }\n
-    {
-        "doc" : {
-            "age" : 27
-        }
-    }\n
+{
+    "update": {
+        "_index": "user", 
+        "_type": "profile", 
+        "_id": "2"
+    }
+}\n
+{ 
+    "doc" : {
+        "full_name" : "Elon Musk The Great" 
+    }
+}\n
+{
+    "update": {
+        "_index": "user", 
+        "_type": "profile", 
+        "_id": "1"
+    }
+}\n
+{
+    "doc" : {
+        "age" : 27
+    }
 }\n
 '
 ```
