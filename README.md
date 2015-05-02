@@ -1,2 +1,11 @@
-# elasticsearch_examples
-Just some examples for a YouTube video on basic elasticsearch techniques such as indexing, mapping, querying, editing.
+```
+{
+    "profile" : {
+        "properties" : {
+            "full_name" : {"type" : "string", "store" : true },
+            "bio" : {"type" : "string", "store" : true },
+            "age" : {"type" : "integer", "store" : true }
+        }
+    }
+}
+```
