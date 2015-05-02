@@ -35,7 +35,7 @@ curl -XPUT http://localhost:9200/user/_mapping/profile -d '
         "_timestamp" : {
             "enabled" : true,
             "path" : "created_on"
-        }
+        },
         "properties" : {
             "full_name" : { "type" : "string", "store" : true },
             "bio" : { "type" : "string", "store" : true },
