@@ -229,3 +229,7 @@ curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
 }
 '
 ```
+
+Conclusion
+---
+Hope that was extremely useful for anyone trying to figure out how to do different things within elasticsearch. I know it is a big struggle learning from the get go. There is great documentation everywhere but no real good step by step solution to putting some data in and getting it out. Hopefully this helped!!!!! If you want to get notified when I post new repositories for tutorials or post new videos on youtube please follow me here and subscribe on youtube. Thanks everyone!
