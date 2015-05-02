@@ -62,7 +62,8 @@ curl -XPOST http://localhost:9200/user/profile/1 -d '
     "bio" : "My name is Andrew. I am an agile DevOps Engineer who is passionate about working with Software as a Service based applications, REST APIs, and various web application frameworks.",
     "age" : 27,
     "location" : "41.1246110,-73.4232880",
-    "enjoys_coffee" : true
+    "enjoys_coffee" : true,
+    "created_on" : now
 }
 '
 ```
