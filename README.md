@@ -241,26 +241,24 @@ curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
 '
 
 # Alright one last query. Here we are going to request that the user
-# must be less than 50 years of age and if they like coffee they should
-# also be considered.
+# should be less than 30 years of age or if they don't like coffee they 
+# should also be considered.
 
 curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
 { 
     "query" : {
         "bool" : {
-            "must" : [
-                {
-                    "range" : {
-                        "age" : {
-                            "lt" : 44
-                        }
-                    }
-                }
-            ],
             "should" : [
                 {
                     "term" : {
-                        "enjoys_coffee" : true
+                        "enjoys_coffee" : false
+                    }
+                },
+                {
+                    "range" : {
+                        "age" : {
+                            "lt" : 30
+                        }
                     }
                 }
             ]
