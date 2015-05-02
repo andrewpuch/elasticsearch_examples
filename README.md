@@ -1,11 +1,14 @@
 ```
-# Create the user index.
+# Create the user index. Since we are dealing with one single node in my example the replicas are set to 0
+# if you had more than 1 node in the cluster the default for number of replicas is 1 and will actually put an exact
+# replica of your data on the second node. The shards by default is 5 and this basically how elasticsearch can 
+# quickly find your data by sharding it out to multiple nodes. 
 curl -XPUT http://localhost:9200/user -d '
 {
     "settings" : {
         "index" : {
             "number_of_shards" : 5,
-            "number_of_replicas" : 1
+            "number_of_replicas" : 0
         }
     }
 }
