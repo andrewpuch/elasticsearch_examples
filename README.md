@@ -7,7 +7,7 @@ Creating the user index.
 # by default is 5 and this basically how elasticsearch can quickly find your data by 
 # sharding it out to multiple nodes. 
 
-curl -XPUT http://localhost:9200/user -d '
+curl -XPUT http://localhost:9200/user?pretty=true -d '
 {
     "settings" : {
         "index" : {
@@ -30,7 +30,7 @@ Create the mapping for the user index and type of profile.
 # data sets where the cost of parsing the source is high. I'm only using this as an 
 # example for you to let you know it's possible.
 
-curl -XPUT http://localhost:9200/user/_mapping/profile -d '
+curl -XPUT http://localhost:9200/user/_mapping/profile?pretty=true -d '
 {
     "profile" : {
         "properties" : {
@@ -59,7 +59,7 @@ Now let's insert some data!
 # where you want to constantly update the data in elasticsearch such as a social network 
 # you will want to add an ID.
 
-curl -XPOST http://localhost:9200/user/profile/1 -d '
+curl -XPOST http://localhost:9200/user/profile/1?pretty=true -d '
 {
     "full_name" : "Andrew Puch",
     "bio" : "My name is Andrew. I am an agile DevOps Engineer who is passionate about working with Software as a Service based applications, REST APIs, and various web application frameworks.",
@@ -70,7 +70,7 @@ curl -XPOST http://localhost:9200/user/profile/1 -d '
 }
 '
 
-curl -XPOST http://localhost:9200/user/profile/2 -d '
+curl -XPOST http://localhost:9200/user/profile/2?pretty=true -d '
 {
     "full_name" : "Elon Musk",
     "bio" : "Elon Reeve Musk is a Canadian-American entrepreneur, engineer, inventor and investor. He is the CEO and CTO of SpaceX, CEO and product architect of Tesla Motors, and chairman of SolarCity.",
@@ -81,7 +81,7 @@ curl -XPOST http://localhost:9200/user/profile/2 -d '
 }
 '
 
-curl -XPOST http://localhost:9200/user/profile/3 -d '
+curl -XPOST http://localhost:9200/user/profile/3?pretty=true -d '
 {
     "full_name" : "Some Hacker",
     "bio" : "I am a haxor user who you should end up deleting.",
@@ -101,7 +101,7 @@ Now time to update a record.
 # So let's do that. It's important here that we specify "doc" and _update because if 
 # you don't you will wipe out your record ;)
 
-curl -XPOST http://localhost:9200/user/profile/1/_update -d '
+curl -XPOST http://localhost:9200/user/profile/1/_update?pretty=true -d '
 {
     "doc" : {
         "location" : "40.7127840,-74.0059410"
@@ -117,7 +117,7 @@ We noticed a bad user. Let's delete them.
 # out of your system docs will need to be deleted. In our case for this demo we notice
 # that there is a bad user. Lets remove them.
 
-curl -XDELETE http://localhost:9200/user/profile/3
+curl -XDELETE http://localhost:9200/user/profile/3?pretty=true
 ```
 
 Updating more than one at a time!
@@ -128,7 +128,7 @@ Updating more than one at a time!
 # my age to 27. The best way to perform more than one action at a time in elasticsearch
 # is through the bulk API. In my repository there is the bulk.json file.
 
-curl -XPOST http://localhost:9200/_bulk --data-binary @bulk.json
+curl -XPOST http://localhost:9200/_bulk?pretty=true --data-binary @bulk.json
 ```
 
 Now let's query that data!
