@@ -81,3 +81,8 @@ curl -XPOST http://localhost:9200/user/profile/2 -d '
 }
 '
 ```
+
+Now let's query that data!
+---
+```
+```
