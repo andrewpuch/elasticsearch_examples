@@ -126,12 +126,45 @@ Now let's query that data!
 # Let's search for the word "engineer" you'll notice we get both our users back because 
 # engineer is in both of their profiles.
 
-curl -XGET http://localhost:9200/user/profile/_search?q=engineer
+curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
+{ 
+    "query" : {
+        "query_string" : {
+            "query" : "engineer"
+        }
+    }
+}
+'
 
 # Now let's just search for users who have "investor" in their profile. You will notice
 # we only get back Elon's profile.
 
-curl -XGET http://localhost:9200/user/profile/_search?q=investor
+curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
+{ 
+    "query" : {
+        "query_string" : {
+            "query" : "investor"
+        }
+    }
+}
+'
 
-# Okay, okay lets do something fun.
+# Okay, okay lets do something fun. Let's try to find ONLY the users who enjoy drinking coffee.
+
+curl -XGET http://localhost:9200/user/profile/_search?pretty=true -d '
+{ 
+    "query" : {
+        "bool" : {
+            "must" : [
+                {
+                    "term" : {
+                        "enjoys_coffee" : true
+                    }
+                }
+            ]
+        }
+    }
+}
+'
+
 ```
