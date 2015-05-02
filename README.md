@@ -13,7 +13,11 @@ curl -XPUT http://ELASTIC_URL:9200/user/_mapping/profile -d '
             "bio" : {"type" : "string", "store" : true },
             "age" : {"type" : "integer" },
             "location" : {"type" : "geo_point" },
-            "enjoys_coffee" : {"type": "boolean" }
+            "enjoys_coffee" : {"type" : "boolean" },
+            "created_on" : {
+                "type" : "date", 
+                "format" : "date_time" 
+            }
         }
     }
 }
