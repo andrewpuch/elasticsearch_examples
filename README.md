@@ -34,8 +34,8 @@ curl -XPUT http://localhost:9200/user/_mapping/profile?pretty=true -H 'Content-T
 {
     "profile" : {
         "properties" : {
-            "full_name" : { "type" : "string", "store" : true },
-            "bio" : { "type" : "string", "store" : true },
+            "full_name" : { "type" : "text", "store" : true },
+            "bio" : { "type" : "text", "store" : true },
             "age" : { "type" : "integer" },
             "location" : { "type" : "geo_point" },
             "enjoys_coffee" : { "type" : "boolean" },
